@@ -7,4 +7,4 @@
 - Ternanry Operators | Validations
 - Higher Order Functions
 - Callback Functions
-- Map & Filter
+- Map & Filter (to be covered on D7)
