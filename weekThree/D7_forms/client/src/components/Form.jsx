@@ -51,10 +51,15 @@ const Form = () => {
                 </div>
                 <button className="btn btn-info">Add Movie</button>
             </form>
-            <div className="col-md-4 mx-auto mt-4 offset-2">
-                <h3>Title: { movie.title }</h3>
-                <h3>Year: { movie.year }</h3>
-                <h3>genre: { movie.genre }</h3>
+            <div className="col-md-3 mx-auto mt-4 offset-2">
+                <h3>Movies</h3>
+                <ul>
+                    { // in the array allMovies, (1) take 2 arguments: movie and index
+                        allMovies.map( (movie, i) => // (2) iterate to get title, year, genre and make a list out of it
+                        <li key={i}>{ movie.title } - { movie.year } | { movie.genre }</li> )
+                        // create an index for the array and iterate for each movie created
+                    }
+                </ul>
             </div>
         </div>
     )
