@@ -13,9 +13,9 @@ function App() {
     <div className="App">
       {/*   ...needs to match   this       and            this  */}
       <MovieForm allMovies={ allMovies } setAllMovies={ setAllMovies } /><hr />
-      <DisplayAll movieList={ allMovies } />
-      <hr /><DisplayOne oneMovie={ allMovies } />
-      <hr /><UseEffect />
+      <DisplayAll movieList={ allMovies } /><hr />
+      <DisplayOne oneMovie={ allMovies } /><hr />
+      <UseEffect />
     </div>
   );
 }
