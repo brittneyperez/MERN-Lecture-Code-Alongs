@@ -9,4 +9,4 @@
 - Routing continued
     - routing practice
     - `useNavigate`
-    - 
+    - `useParams`
