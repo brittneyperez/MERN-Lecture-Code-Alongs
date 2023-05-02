@@ -69,9 +69,41 @@
     const port = 8000;
     // port can be changed to whatever is available
     ```
-    The above code performs the functionaltiy of taking a request and giving it a response. On the next line, write the following:
+    The above code performs the functionaltiy of taking a request and giving it a response. Where it says `const port = 8000` this means it will run on `localhost:8000` rather than on `localhost:3000` On the next line, write the following:
     ```js
     app.get("/api", (req, res) => {
         res.json({ message: "Hello World!" });
     });
     ```
+    _What does the above code mean?_ Everytime there is a `get()` request to `/api`, we are getting the object response (in JSON) "`message: Hello World`".
+6. Below this block of code, write:
+    ```js
+    app.listen( port, () => console.log(`Listening on port ${port}`) );
+    ```
+    _What does the above code mean?_ This means: listen to the request being done on this port (i.e., `port 8000`).
+### Starting Our Server
+7. Now that our server is ready, we can start our server by writing the terminal command (`cd server`):
+    ```
+    node server.js
+    ```
+8. Now go on the browser and type in the url `localhost:8000/api`.
+
+### Nodemon
+9. **Nodemon** can also be installed to run our server. This is useful if we want to see the updates to our server upon change as `node server.js` does not reflect what we add/remove in our running app. To start up the server using Nodemon, type this into the terminal:
+    ```
+    nodemon server.js
+    ```
+    However, Nodemon needs to be installed globally before being able to run this code above. This will require the following command to install globally:
+    ```
+    npm install -g nodemon
+    ```
+    Or if on Mac or Linux, `sudo` will need to be used:
+    ```
+    sudo npm install -g nodemon
+    ```
+    If we want the same ability to see our changes live without installing Nodemon, we can use this command:
+    ```
+    node --watch server.js
+    ```
+    If this poses an issue, then Nodemon may need to be installed.
+10. Another way to check our responses is checking with the Postman app. We can type GET request URL—`localhost:8000/api`—and see the results get fetched. Watch as it returns the data in JSON.
