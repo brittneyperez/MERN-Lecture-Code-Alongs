@@ -4,10 +4,11 @@ const TvShowController = require('../controllers/tvshow.controller');
 module.exports = app => {
     // READ
     app.get('/api/allShows', TvShowController.findAllShows);
-    // app.get('/api/users/:id', TvShowController.findOneSingleUser);
+    app.get('/api/oneShow/:id', TvShowController.findOneShow);
     // CREATE
     app.post('/api/allShows', TvShowController.createShow);
-    
-    // UPDATE: app.patch('/api/users/:id', TvShowController.updateExistingUser);
-    // DELETE: app.delete('/api/users/:id', TvShowController.deleteAnExistingUser);
+    // UPDATE
+    app.patch('/api/updateShow/:id', TvShowController.updateOneShow);
+    // DELETE
+    app.delete('/api/deleteShow/:id', TvShowController.deleteShow);
 }
