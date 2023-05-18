@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav';
 import DisplayAll from './components/DisplayAll';
 import CreateAlbum from './components/CreateAlbum';
+import DisplayOne from './components/DisplayOne';
+import UpdateAlbum from './components/UpdateAlbum';
 
 function App() {
   
@@ -11,12 +13,13 @@ function App() {
   
   return (
     <div className="App">
-      {/* <h1>Welcome to Albums App</h1> */}
       <BrowserRouter>
         <Nav />
         <Routes>
           <Route path='/' element={ <DisplayAll allAlbums={ allAlbums } setAllAlbums={ setAllAlbums } /> } />
           <Route path='/createAlbum/form' element={ <CreateAlbum /> } />
+          <Route path='/oneAlbum/:id' element={ <DisplayOne /> } />
+          <Route path='/editAlbum/:id' element={ <UpdateAlbum /> } />
         </Routes>
       </BrowserRouter>
     </div>

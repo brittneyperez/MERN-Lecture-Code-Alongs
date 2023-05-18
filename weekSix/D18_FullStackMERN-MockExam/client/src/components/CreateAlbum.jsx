@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CreateAlbum = () => {
     
+    const navigate = useNavigate()
     const [ album, setAlbum ] = useState({
         albumName: "",
         artist: "",
@@ -27,9 +29,11 @@ const CreateAlbum = () => {
         axios.post('http://localhost:8000/api/newAlbum', album)
             .then((res) => {
                 console.log(res)
+                navigate('/')
             })
             .catch((err) => {
                 console.log(err)
+                setErrors(err.response.data.errors) // this will set errors if invalid data is sent
             })
     }
     
@@ -92,6 +96,7 @@ const CreateAlbum = () => {
                             className='bg-slate-100 appearance-none border-2 border-slate-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-200'
                         /> */}
                         <select name='genre' onChange={ changeHandler } value={album.genre}>
+                            <option value="">--Select One--</option>
                             <option value="Rock">Rock</option>
                             <option value="Alternative">Alternative</option>
                             <option value="Hip-Hop/Rap">Hip-Hop/Rap</option>
@@ -122,7 +127,7 @@ const CreateAlbum = () => {
                         <input type="checkbox" name="explicit" onChange={ changeHandler } value={ album.explicit }
                             className='bg-slate-100 appearance-none border-2 border-slate-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-sky-200'
                         />
-                        { errors.explicit ? <p className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded'>{ errors.explicit.message }</p> : null }
+                        {/* { errors.explicit ? <p className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded'>{ errors.explicit.message }</p> : null } */}
                     </div>
                 </div>
                 <div>

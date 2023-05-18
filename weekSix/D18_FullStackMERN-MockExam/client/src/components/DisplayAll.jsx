@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const DisplayAll = ({ allAlbums, setAllAlbums }) => {
     
@@ -16,6 +17,7 @@ const DisplayAll = ({ allAlbums, setAllAlbums }) => {
             })
 	}, [])
     
+    
     return (
         <div>
             <h2>DisplayAll</h2>
@@ -24,9 +26,13 @@ const DisplayAll = ({ allAlbums, setAllAlbums }) => {
                 allAlbums.map((album) => (
                     <div key={ album._id }>
                         <h3>{ album.albumName }</h3>
-                        <p>{album.releaseYear} • {album.artist}</p>
-                        <p>Explicit?</p>
-                        { album.explicit ? <p>Yes</p> : <p>No</p> }
+                        <p>{album.artist}</p>
+                        
+                        <div style={{display:'flex',justifyContent:'center', gap:'0.5rem'}}>
+                            <Link to={`/oneAlbum/${album._id}`}>Details</Link>
+                            |
+                            <Link to={`/editAlbum/${album._id}`}>Edit</Link>
+                        </div>
                     </div>
                 ))
             }
