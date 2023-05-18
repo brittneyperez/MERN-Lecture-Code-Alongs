@@ -20,4 +20,6 @@
 
 ## Topics to Cover
 - Mock-Exam Prep
-    - preparing the Back-End server
+    - Building a Full-Stack MERN App
+        - Back-End: C.R.U.D. & Boolean Validations
+        - Front-End
