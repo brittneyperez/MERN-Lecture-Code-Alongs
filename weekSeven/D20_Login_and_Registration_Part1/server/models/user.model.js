@@ -31,8 +31,8 @@ const UserSchema = new mongoose.Schema({
 // * Middleware is to check and make sure the password and confirm password match
 // ? 1. Middleware to create virutal field: confirm password
 UserSchema.virtual('confirmPassword')
-    .get(() => this.confirmPassword)
-    .set((value) => this.confirmPassword = value)
+    .get(() => this.confirmPassword) // "this" refers to the value in the input field
+    .set((value) => this.confirmPassword = value) // sets the value in the virtual field
 
 // ? 2. Middleware to check/validate the password and confirm password match
 UserSchema.pre('validate', function (next) {
@@ -42,7 +42,7 @@ UserSchema.pre('validate', function (next) {
     next();
 })
 
-// ! After confirming password validation, we need to hash it
+// ! After confirming password validation, we need to hash it with Bcrypt
 // * Middleware to hash password
 UserSchema.pre('save', function (next) {
     bcrypt.hash(this.password, 10) // the function will use the password the user inputs, and hash 10 rounds of salt

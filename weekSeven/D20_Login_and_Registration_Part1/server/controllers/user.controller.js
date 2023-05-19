@@ -21,10 +21,10 @@ module.exports = {
                 // * Generate User Token and storing the id and email of the newly created user
                 // we can choose what we want to encode (i.e., somewhat sensitive info) and prevent malicious activity
                 const userToken = jwt.sign({ _id: newUser._id, email: newUser.email }, secret, {expiresIn:'2h'}) 
-                console.log(userToken) // it will look REALLY LONG in the terminal
+                console.log(userToken) // it will look REALLY LONG in the terminal, go to jwt.io to decrypt SOME of the data
                 
                 // Sending user data back to the client
-                res.status(201).cookie('userToken', userToken, {httpOnly:true, maxAge: 2 * 60 * 60 * 1000}).json({ newUser })
+                res.status(201).cookie('userToken', userToken, { httpOnly:true, maxAge: 2 * 60 * 60 * 1000 }).json({ newUser })
                 // ? In Postman, we should see in the Cookie tab the data we requested to see
             }
         }
