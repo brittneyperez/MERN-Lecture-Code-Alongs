@@ -17,16 +17,17 @@ const CreateShowForm = () => {
     const changeHandler = (e) => {
         setShow({...show, [e.target.name]: e.target.value})
     }
+    
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8000/api/allShows`, show) // "show" is the object that will send back the POST data to the request.body in the backend
+        axios.post(`http://localhost:8000/api/allShows`, show) // "show" is the object that will send back the POST data into the request.body in the backend
             .then((res) => {
-                console.log(res);
+                console.log(res); // this will help us see if the show successfully POST the data to the back-end
                 navigate('/');
             })
             .catch((err) => {
-                console.log(err.response.data.errors); // this will now log the error for each object; the err message is what we want
-                setErrors(err.response.data.errors); // err message will show up in Components > State hooks
+                console.log(err.response.data.errors); // error for each object; the err message is what we want
+                setErrors(err.response.data.errors); // err message will show up in Components --> State hooks
             })
     }
     

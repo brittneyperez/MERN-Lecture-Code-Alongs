@@ -9,6 +9,23 @@ const DisplayAll = ({ tvShowList, setTvShowList }) => {
         .then((response) => {
             console.log(response)
             setTvShowList(response.data.shows)
+            /* Why "response.data.shows"?
+            Because if we define our list of objects
+            as a object in the back-end (i.e., {shows: allShows}) , it will send back
+            a key:val pair object with the key, shows (as seen above), and the value, an 
+            array of of objects.
+                * i.e., literally { key of shows: array of objects }
+            If we define in the controller as of response.json(allShows), its still valid 
+            but setTvShowList() needs to retrieve the Back-End data as (response.data).
+                * In controller: response.json( allShows )
+                * In DisplayAll: setTvShowList( response.data )
+            */
+            /* Right now our data is set up as such:
+                * In controller: ({ show: allShows})
+                This is set up to send back an object to the FrontEnd.
+                So we set up our state like this:
+                * In DisplayAll: setTvShowList( response.data.shows )
+            */
         })
         .catch((error) => {
             console.log(error)
@@ -17,7 +34,7 @@ const DisplayAll = ({ tvShowList, setTvShowList }) => {
     
     const deleteHandler = (id) => {
         /* 
-            for this to work we need to first create an anonymous arrow function 
+            TODO: for this to work we need to first create an anonymous arrow function 
             that will pass the show's id as an argument for the deleteHandler (see line 37), then
             this id can be passed though the deleteHandler to execute the DELETE function
         */
@@ -37,7 +54,8 @@ const DisplayAll = ({ tvShowList, setTvShowList }) => {
         <div className='container mx-auto'>
             <h2 className='text-2xl font-serif font-bold text-zinc-800'>All of Our Shows</h2>
             <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-            {
+            { // * To be able to map through tvShowList, it NEEDS TO BE a an array/list.
+                // * In a map() function, id is written as _id when using Mongoose/MongoDB.
                 tvShowList.map((show) => (
                     <div key={show._id} className='my-2 border border-zinc-400 rounded px-4 py-4 bg-white shadow-md rounded'>
                         <h3 className='italic text-xl font-serif font-semibold text-zinc-700'>{ show.title }</h3>

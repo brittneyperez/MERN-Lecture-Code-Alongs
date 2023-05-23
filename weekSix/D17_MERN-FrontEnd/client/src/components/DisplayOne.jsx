@@ -4,10 +4,14 @@ import { useParams } from 'react-router-dom'
 
 const DisplayOne = () => {
     
-    const [ show, setShow ] = useState({});
+    const [ show, setShow ] = useState({}); 
+    /*
+    our state will be an empty object since we're only
+    retrieving one object of the array of shows
+    */
     
     const { id } = useParams();
-    console.log(id) // => use this to test if its directing to that one item
+    console.log("Show ID:", id) // => use this to test if its directing to that one item
     
     useEffect(() => {
         axios.get(`http://localhost:8000/api/oneShow/${id}`)

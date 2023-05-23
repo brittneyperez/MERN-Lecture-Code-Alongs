@@ -19,11 +19,13 @@ const UpdateShowForm = () => {
         setShow({...show, [e.target.name]: e.target.value})
     }
     
-    // ! find the show to update it first
+    // TODO: Find the show to update it first!
     useEffect(() => {
         axios.get(`http://localhost:8000/api/oneShow/${id}`)
             .then((res) => {
-                console.log(res)
+                console.log(res) // * BEST METHOD: 
+                console.log(res.data) // logs response's data
+                console.log(res.data.show) // logs the object in data from response
                 setShow(res.data.show)
             })
             .catch((err) => {
@@ -31,7 +33,7 @@ const UpdateShowForm = () => {
             })
     }, [])
     
-    // ! then update submit handler so it will PATCH the info, NOT POST
+    // TODO: Update submit handler so it will PATCH the info, NOT POST.
     const submitHandler = (e) => {
         e.preventDefault();
         axios.patch(`http://localhost:8000/api/updateShow/${id}`, show) // "show" is the object that will send back the PATCH data to the request.body in the backend

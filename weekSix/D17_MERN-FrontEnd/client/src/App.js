@@ -14,8 +14,9 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <h1 className='text-3xl font-serif font-bold mt-3 text-zinc-900'>Welcome to the TV Show App!</h1>
-        <div id="link_group" className="flex justify-center gap-3 mb-3">
+      <div id="header" className='bg-indigo-100 py-4 mb-3'>
+        <h1 className='text-3xl font-serif font-bold text-zinc-900'>Welcome to the TV Show App!</h1>
+        <div id="link_group" className="flex justify-center gap-3">
           <Link to={"/createShow/form"} className='text-sky-600 no-underline hover:underline hover:text-rose-400'>
             Add your favorite show
           </Link>
@@ -24,6 +25,7 @@ function App() {
             Home
           </Link>
         </div>
+      </div>
         
         <Routes>
           <Route path="/" element={ <DisplayAll tvShowList={ tvShowList } setTvShowList={ setTvShowList } /> } />
